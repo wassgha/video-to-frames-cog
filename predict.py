@@ -8,7 +8,7 @@ import shutil
 class Predictor(BasePredictor):
     def predict(self,
                 video: Path = Input(description="Video to split into frames"),
-                fps: int = Input(description="Number of images per second of video, when not exporting all frames", default=1, ge=1),
+                fps: float = Input(description="Number of images per second of video, when not exporting all frames", default=1.0, ge=0.05),
                 downsample: bool = Input(description="Downsample frames to a maximum of 480p", default=True),
     ) -> List[Path]:
         """Run ffmpeg to split the video into frames"""
