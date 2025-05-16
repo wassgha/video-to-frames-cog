@@ -32,7 +32,7 @@ class Predictor(BasePredictor):
             filters = f"fps={fps},{scale_filter}"
         else:
             filters = f"fps={fps}"
-        command = f"ffmpeg -hwaccel cuda -i {video} -vf \"{filters}\" {output_dir}/out%03d.png"
+        command = f"ffmpeg -hwaccel cuda -i \"{video}\" -vf \"{filters}\" {output_dir}/out%03d.png"
 
         subprocess.run(command, shell=True, check=True)
         frame_files = sorted(os.listdir(output_dir))
